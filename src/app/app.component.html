@@ -1,0 +1,24 @@
+<p-card >
+  <div class="flex flex-row card-container gap-1" >
+
+    <div class="flex flex-column gap-1 surface-50 ">
+
+      <p-card class="surface-200"  [style]="{'text-align': 'center'}">
+        <p-avatar image="../../../assets/Leslie_Thomson.jpg" size="xlarge" shape="circle" ></p-avatar>
+        <h5 style="font-size: medium;">Leslie Thompson</h5>
+      </p-card>
+
+      <app-navmenu></app-navmenu>
+
+    </div>
+
+    <div class="flex-none card-container w-auto h-auto border-round">
+
+      <app-top-bar  style="background-color:#F5F5F5;"></app-top-bar>
+      <router-outlet></router-outlet>
+      
+    </div>
+
+  </div>
+</p-card>
+

@@ -1,0 +1,36 @@
+<h3 style="width:1400px; ">Products</h3>
+
+<p-table [value]="ProductsList"
+    [paginator]="true" [rows]="15" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[15,25,50]"
+    styleClass="p-datatable-gridlines p-datatable-sm" 
+    [tableStyle]="{'max-width': '1400px', 'width':'1400px', 'font-size': 'small'}">
+    
+    <ng-template pTemplate="header" >
+        <th scope="col">Product Code</th>
+        <th scope="col">Product<br>Name</th>    
+        <th scope="col">Product<br>Line</th>                                
+        <th scope="col">Product Scale</th>
+        <th scope="col">Product Vendor</th>
+        <th scope="col">Product Description</th>
+        <th scope="col">Quantity in Stock</th>
+        <th scope="col">Buy Price</th>
+        <th scope="col" title="Manufacturer's suggested Retail Price">MSRP</th>
+    </ng-template>
+
+    <ng-template pTemplate="body" class="clickable" let-product>
+        <tr  [routerLink]="['/products/', product.productCode]" style="font-size: small;">            
+                <td scope="row">{{product.productCode}}</td>
+                <td style="font-weight: bold;">{{product.productName}}</td>
+                <td style="font-weight: bold;">{{product.productLine}}</td>
+                <td>{{product.productScale}}</td>
+                <td>{{product.productVendor}}</td>
+                <td>{{product.productDescription}}</td>
+                <td style="text-align: right;">{{product.quantityInStock | number}}</td>
+                <td style="text-align: right;">{{product.buyPrice | currency}}</td>
+                <td style="text-align: right;">{{product.msrp | currency}}</td>
+        </tr>
+    </ng-template>
+
+</p-table>
+

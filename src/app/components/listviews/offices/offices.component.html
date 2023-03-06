@@ -1,0 +1,35 @@
+<h3 style="width:1400px; ">Offices</h3>
+
+<p-table [value]="OfficesList"
+    [paginator]="true" [rows]="15" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[15,25,50]"
+    styleClass="p-datatable-gridlines p-datatable-sm"
+    [tableStyle]="{'width':'1400px', 'font-size': 'small', 'max-width': '1500px'}" >
+
+    <ng-template pTemplate="header" >
+        <th scope="col">Office Code</th>
+        <th scope="col">City</th>
+        <th scope="col">Phone</th>    
+        <th scope="col">Address Line 1</th>    
+        <th scope="col">Address Line 2</th>    
+        <th scope="col">State</th>    
+        <th scope="col">Country</th>    
+        <th scope="col">Postal Code</th>    
+        <th scope="col">Territory</th>    
+    </ng-template>
+
+    <ng-template pTemplate="body" class="clickable" let-office>
+        <tr  [routerLink]="['/offices/', office.officeCode]" style="font-size: small;">            
+                <td scope="row">{{office.officeCode}}</td>
+                <td style="font-weight: bold;">{{office.city}}</td>
+                <td>{{office.phone}}</td>
+                <td>{{office.addressLine1}}</td>
+                <td>{{office.addressLine2}}</td>
+                <td>{{office.state}}</td>
+                <td style="font-weight: bold;">{{office.country}}</td>
+                <td>{{office.postalCode}}</td>
+                <td>{{office.territory}}</td>
+       </tr>
+    </ng-template>
+
+</p-table>

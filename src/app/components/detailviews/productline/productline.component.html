@@ -1,0 +1,80 @@
+<h3 style="width: 1500px;">Product Line {{productLineFromRoute}}</h3>
+
+<p></p>
+
+<form>
+    <table>
+        
+        <tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Product Line</mat-label>
+                <input matInput placeholder="Product Line" [(ngModel)]="productLine.productLine" name="productLine" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field style="width: 1000px; margin-left: 20px;">
+                <mat-label class="cm-label">Text Description</mat-label>
+                <textarea matInput placeholder="Text Description" [(ngModel)]="productLine.textDescription" name="textDescription" 
+                 style="width: 980px; margin-bottom: 0px;" cdkTextareaAutosize readonly></textarea>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-300"
+                style="margin-left: 20px;">                
+                <mat-label class="cm-label">HTML Description</mat-label>
+                <input matInput placeholder="HTML Description" [ngModel]="productLine.htmlDescription" name="htmlDescription" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300" >
+                <mat-label class="cm-label">Image</mat-label>
+                <input matInput placeholder="Image" [ngModel]="productLine.image" name="image" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr>
+    </table>
+</form>
+
+<p></p>
+
+<h1 style="width: 1500px; color: white; background-color: rgb(121, 120, 120); padding: 18px; font-size: 21px">
+    Products</h1>
+
+<p-table [value]="ProductsList"
+    [paginator]="true" [rows]="15" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[15,25,50]"
+    styleClass="p-datatable-gridlines p-datatable-sm" 
+    [tableStyle]="{'max-width': '1500px', 'width':'1500px', 'font-size': 'small' }">
+    
+    <ng-template pTemplate="header" >
+        <th scope="col">Product Code</th>
+        <th scope="col">Product<br>Name</th>                                                 
+        <th scope="col">Product Scale</th>
+        <th scope="col">Product Vendor</th>
+        <th scope="col">Product Description</th>
+        <th scope="col">Quantity in Stock</th>
+        <th scope="col">Buy Price</th>
+        <th scope="col" title="Manufacturer's suggested Retail Price">MSRP</th>
+    </ng-template>
+
+    <ng-template pTemplate="body" class="clickable" let-product>
+        <tr  [routerLink]="['/products/', product.productCode]" style="font-size: small;">
+            <td scope="row" style="font-weight: bold;">{{product.productCode}}</td>
+            <td style="font-weight: bold;">{{product.productName}}</td>
+            <td>{{product.productScale}}</td>
+            <td style="font-weight: bold;">{{product.productVendor}}</td>
+            <td>{{product.productDescription}}</td>
+            <td style="text-align: right;">{{product.quantityInStock | number}}</td>
+            <td style="text-align: right;">{{product.buyPrice | currency}}</td>
+            <td style="text-align: right;">{{product.msrp | currency}}</td>
+        </tr>
+    </ng-template>
+
+</p-table>
+

@@ -1,0 +1,26 @@
+<h3 style="width:1400px; ">Product Lines</h3>
+
+<p-table [value]="ProductlinesList"
+    [paginator]="true" [rows]="15" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[15,25,50]"
+    styleClass="p-datatable-gridlines p-datatable-sm" 
+    [tableStyle]="{'max-width': '1400px', 'width':'1400px', 'font-size': 'small'}">
+    
+    <ng-template pTemplate="header" >
+        <th scope="col">Product Line</th>
+        <th scope="col">Text Description</th>    
+        <th scope="col">HTML Description</th>                                
+        <th scope="col">Image</th>
+    </ng-template>
+
+    <ng-template pTemplate="body" class="clickable" let-productline>
+        <tr  [routerLink]="['/productlines/', productline.productLine]" style="font-size: small;">
+            <td scope="row"  style="font-weight: bold;">{{productline.productLine}}</td>
+            <td>{{productline.textDescription}}</td>
+            <td>{{productline.htmlDescription}}</td>
+            <td>{{productline.image}}</td>
+            </tr>
+    </ng-template>
+
+</p-table>
+

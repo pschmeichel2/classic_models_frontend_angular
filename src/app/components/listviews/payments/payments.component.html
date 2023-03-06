@@ -1,0 +1,27 @@
+<h3 style="width:1000px; ">Payments</h3>
+
+
+<p-table [value]="PaymentsList"
+    [paginator]="true" [rows]="15" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[15,25,50]"
+    styleClass="p-datatable-gridlines p-datatable-sm" 
+    [tableStyle]="{'max-width': '1500px', 'width':'1000px', 'font-size': 'small'}">
+    
+    <ng-template pTemplate="header" >
+        <th scope="col">Customer Number</th>
+        <th scope="col">Check Number</th>    
+        <th scope="col">Payment Date</th>                                
+        <th scope="col">Amount</th>
+    </ng-template>
+
+    <ng-template pTemplate="body" class="clickable" let-payment>
+        <tr  [routerLink]="['/payments/', payment.customerNumber, payment.checkNumber]" style="font-size: small;">
+            <td scope="row">{{payment.customerNumber}}</td>
+            <td style="font-weight: bold;">{{payment.checkNumber}}</td>
+            <td>{{payment.paymentDate | date :'dd.MM.yyyy'}}</td>
+            <td style="text-align: right">{{payment.amount | currency}}</td>    
+        </tr>
+    </ng-template>
+
+</p-table>
+

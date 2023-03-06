@@ -1,0 +1,56 @@
+<h3 style="width: 1000px;">Order Detail {{orderNumberFromRoute}}/{{productCodeFromRoute}}</h3>
+<p></p>
+<form>
+    <table>
+        
+        <tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-icon matPrefix  [routerLink]="['/orders/', orderDetail.orderNumber]">open_in_browser</mat-icon>
+                <mat-label class="cm-label">Order Number</mat-label>
+                <input matInput placeholder="Order Number" [(ngModel)]="orderDetail.orderNumber" name="orderNumber" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300">
+                <mat-label class="cm-label">Order Line Number</mat-label>
+                <input matInput placeholder="Customer Name" [(ngModel)]="orderDetail.orderLineNumber" name="orderLineNumber" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-300"
+                style="margin-left: 20px;">                
+                <mat-icon matPrefix  [routerLink]="['/products/', orderDetail.productCode]">open_in_browser</mat-icon>
+                <mat-label class="cm-label">Product Code</mat-label>
+                <input matInput placeholder="Product Code" [ngModel]="orderDetail.productCode" name="productCode" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-450" >
+                <mat-label class="cm-label">Product Name</mat-label>
+                <mat-icon matPrefix  [routerLink]="['/products/', orderDetail.productCode]">open_in_browser</mat-icon>
+                <input matInput placeholder="Product Name" [(ngModel)]="orderDetail.productName" name="productName" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Quantity Ordered</mat-label>
+                <input matInput placeholder="Quantity Ordered" [ngModel]="orderDetail.quantityOrdered | number" name="quantityOrdered" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300" >
+                <mat-label class="cm-label">Price Each</mat-label>
+                <input matInput placeholder="Price each" [ngModel]="orderDetail.priceEach | currency" name="priceEach" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr>
+    </table>
+</form>

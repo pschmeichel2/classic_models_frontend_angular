@@ -1,0 +1,56 @@
+.cm-field-300 {    
+    width: 300px; 
+    margin-right: 20px;
+}
+.cm-field-150 {
+    width: 150px; 
+    margin-right: 20px;    
+}
+.cm-field-450 {
+    width: 450px; 
+    margin-right: 20px;    
+}
+.cm-field-1000 {
+    width: 450px; 
+    margin-right: 20px;    
+}
+
+.cm-label {
+    color:rgb(118, 117, 117);
+}
+.cm-input-bold {
+    font-weight: bold;    
+}
+
+th {
+    background-color: #E3F2FD;
+    color: rgb(67, 67, 67);    
+    padding: 10px;
+  }
+  
+
+clickable {
+    cursor: pointer;
+  }
+
+
+tr:hover td{
+    background-color:#d2d1d1;
+    }  
+
+h3 {
+    font-size: 24px; 
+    width:1200px; 
+    height:70px; 
+    background-color: #1976d2; 
+    color:white; 
+    padding-top: 20px; 
+    padding-left: 20px; 
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+    font-weight: normal;
+    }    
+      
+table {
+    font-size:16px;
+    }    

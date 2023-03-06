@@ -1,0 +1,33 @@
+<h3 style="width:1400px; ">Order Details</h3>
+
+<p-table [value]="OrderDetailsList"
+    [paginator]="true" [rows]="15" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[15,25,50]"
+    styleClass="p-datatable-gridlines p-datatable-sm" 
+    [tableStyle]="{'max-width': '1500px', 'width':'1500px', 'font-size': 'small'}">
+    
+    <ng-template pTemplate="header" >
+        <th scope="col">Order Number</th>
+        <th scope="col">OrderLine Number</th>    
+        <th scope="col">Customer Name</th>                                
+        <th scope="col">Product Code</th>
+        <th scope="col">Product Name</th>    
+        <th scope="col">Quantity Ordered</th>    
+        <th scope="col">Price Each</th>    
+</ng-template>
+
+<ng-template pTemplate="body" class="clickable" let-orderDetail>
+    <tr  [routerLink]="['/orderDetails/', orderDetail.orderNumber, orderDetail.productCode]" style="font-size: small;">
+            <td scope="row">{{orderDetail.orderNumber}}</td>
+            <td>{{orderDetail.orderLineNumber}}</td>
+            <td style="font-weight: bold;">{{orderDetail.customerName}}</td>
+            <td>{{orderDetail.productCode}}</td>
+            <td style="font-weight: bold;">{{orderDetail.productName}}</td>
+            <td style="text-align: right;">{{orderDetail.quantityOrdered| number}}</td>
+            <td style="text-align: right;">{{orderDetail.priceEach | currency}}</td>    
+    </tr>
+</ng-template>
+
+</p-table>
+
+

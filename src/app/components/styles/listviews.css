@@ -1,0 +1,35 @@
+th {
+  background-color: #E3F2FD;
+  color: rgb(67, 67, 67);
+}
+
+clickable {
+    cursor: pointer;
+  }
+
+tr:hover td{
+    background-color:#e0dede;
+    }  
+
+h3 {
+  font-size: 24px; 
+  width:1400px; 
+  height:70px; 
+  background-color: #1976d2; 
+  color:white; 
+  padding-top: 20px; 
+  padding-left: 20px; 
+  margin-top: 0px; 
+  margin-bottom: 0px; 
+  font-weight: normal;
+}    
+
+table {
+  font-size:14px;
+}
+
+th {    
+  font-size: small; 
+  text-align: left;    
+  padding: 10px;
+}

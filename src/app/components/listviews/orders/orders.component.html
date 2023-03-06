@@ -1,0 +1,34 @@
+<h3 style="width:1400px; ">Orders</h3>
+
+<p-table [value]="OrdersList"
+    [paginator]="true" [rows]="15" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[15,25,50]"
+    styleClass="p-datatable-gridlines p-datatable-sm" 
+    [tableStyle]="{'max-width': '1500px', 'width': '1500px', 'font-size': 'small' }">
+    
+    <ng-template pTemplate="header" >
+        <th scope="col">Order Number</th>
+        <th scope="col">Order Date</th>    
+        <th scope="col">Required Date</th>                                
+        <th scope="col">Shipped Date</th>
+        <th scope="col">Status</th>    
+        <th scope="col">Comments</th>                                
+        <th scope="col">Customer Name</th>    
+        <th scope="col">Customer Number</th>    
+    </ng-template>
+
+    <ng-template pTemplate="body" class="clickable" let-order>
+        <tr  [routerLink]="['/orders/', order.orderNumber]" style="font-size: small;">
+            <td scope="row">{{order.orderNumber}}</td>
+            <td style="font-weight: bold;">{{order.orderDate | date :'dd.MM.yyyy'}}</td>
+            <td>{{order.requiredDate | date :'dd.MM.yyyy'}}</td>
+            <td>{{order.shippedDate | date :'dd.MM.yyyy'}}</td>
+            <td style="font-weight: bold;">{{order.status}}</td>
+            <td>{{order.comments}}</td>
+            <td>{{order.customerName}}</td>
+            <td>{{order.customerNumber}}</td>
+        </tr>
+    </ng-template>
+
+</p-table>
+

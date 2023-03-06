@@ -1,0 +1,122 @@
+<h3 style="width:1400px;">Employee {{employeeNumberFromRoute}} ({{employee.firstName}} {{employee.lastName}})</h3>
+
+<p></p>
+
+<form>
+
+    <table>
+        <tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Last Name</mat-label>
+                <input matInput placeholder="Last Name" [(ngModel)]="employee.lastName" name="lastName" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300">
+                <mat-label class="cm-label">First Name</mat-label>
+                <input matInput placeholder="First Name" [(ngModel)]="employee.firstName" name="firstName"
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300">
+                <mat-label class="cm-label">Job Title</mat-label>
+                <input matInput placeholder="Job Title" [(ngModel)]="employee.jobTitle" name="jobTitle"
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr>
+        <tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-icon matPrefix  [routerLink]="['/offices/', employee.officeCode]">open_in_browser</mat-icon>
+                <mat-label class="cm-label">Office</mat-label>
+                <input matInput placeholder="Office" [(ngModel)]="employee.city" name="office"
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300" >
+                <mat-icon matPrefix  [routerLink]="['/employees/', employee.reportsTo]">open_in_browser</mat-icon>
+                <mat-label class="cm-label">Manager</mat-label>        
+                <input matInput placeholder="Manager" [(ngModel)]="employee.reportsToName" name="reportsTo"
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300" >
+                <mat-label class="cm-label">Employee Number</mat-label>
+                <input matInput placeholder="Employee Number" [(ngModel)]="employee.employeeNumber" name="employeeNumber"
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr>
+        <tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Extension</mat-label>
+                <input matInput placeholder="Extension" [(ngModel)]="employee.extension" name="extension"
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+            
+            <mat-form-field class="cm-field-300" >
+                <mat-label class="cm-label">Email</mat-label>
+                <input matInput placeholder="Email" [(ngModel)]="employee.email" name="email"
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr>
+    </table>
+</form>
+
+<p></p>
+
+<h1 style="width: 1400px; color: white; background-color: rgb(121, 120, 120); padding: 18px; font-size: 21px">
+    Customers</h1>
+
+
+<p-table [value]="CustomersList"
+    [paginator]="false" [rows]="15" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[15,25,50]"
+    styleClass="p-datatable-gridlines p-datatable-sm" 
+    [tableStyle]="{'max-width': '1400px', 'width':'1400px', 'font-size': 'small'}">
+    
+    <ng-template pTemplate="header" >
+        <th scope="col">Customer Number</th>    
+        <th scope="col">Customer Name</th>    
+        <th scope="col">Contact Last Name</th>    
+        <th scope="col">Contact First Name</th>    
+        <th scope="col">Phone</th>    
+
+        <th scope="col">Address Line1</th>    
+        <th scope="col">Address Line2</th>    
+        <th scope="col">City</th>    
+        <th scope="col">State</th>    
+        <th scope="col">Postal Code</th>    
+
+        <th scope="col">Country</th>                    
+        <th scope="col">Credit Limit</th>                                
+    </ng-template>
+
+    <ng-template pTemplate="body" class="clickable" let-customer>
+        <tr  [routerLink]="['/customers/', customer.customerNumber]" style="font-size: small;">            
+            <td scope="row">{{customer.customerNumber}}</td>
+            <td style="font-weight: bold;">{{customer.customerName}}</td>
+            <td style="font-weight: bold;">{{customer.contactLastName}}</td>
+            <td style="font-weight: bold;">{{customer.contactFirstName}}</td>
+            <td>{{customer.phone}}</td>
+
+            <td>{{customer.addressLine1}}</td>
+            <td>{{customer.addressLine2}}</td>
+            <td style="font-weight: bold;">{{customer.city}}</td>
+            <td>{{customer.state}}</td>
+            <td>{{customer.postalCode}}</td>
+
+            <td style="font-weight: bold;">{{customer.country}}</td>            
+            <td>{{customer.creditLimit}}</td>
+        </tr>
+    </ng-template>
+
+</p-table>
+

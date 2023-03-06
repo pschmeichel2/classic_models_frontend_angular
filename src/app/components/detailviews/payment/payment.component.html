@@ -1,0 +1,40 @@
+<h3 style="width: 1000px;">Payment {{customerNumberFromRoute}}/{{checkNumberFromRoute}}</h3>
+<p></p>
+<form>
+    <table>
+        
+        <tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-icon matPrefix  [routerLink]="['/customers/', payment.customerNumber]">open_in_browser</mat-icon>
+                <mat-label class="cm-label">Customer Number</mat-label>
+                <input matInput placeholder="Customer Number" [(ngModel)]="payment.customerNumber" name="customerNumber" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300">
+                <mat-label class="cm-label">Check Line Number</mat-label>
+                <input matInput placeholder="Check Name" [(ngModel)]="payment.checkNumber" name="checkNumber" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-300"
+                style="margin-left: 20px;">                
+                <mat-label class="cm-label">Payment Date</mat-label>
+                <input matInput placeholder="Payment Date" [ngModel]="payment.paymentDate | date :'dd.MM.yyyy'" name="paymentDate" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300" >
+                <mat-label class="cm-label">Amount</mat-label>
+                <input matInput placeholder="Amount" [ngModel]="payment.amount | currency" name="amount" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,140 @@
+<h3 style="width: 1000px;">Customer {{customerNumberFromRoute}} ({{customer.customerName}})</h3>
+<p></p>
+<form>
+    <table>
+        
+        <tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;" >
+                <mat-label class="cm-label">Customer Name</mat-label>
+                <input matInput placeholder="Customer Name" [(ngModel)]="customer.customerName" name="customerName" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300">
+                <mat-label class="cm-label">Customer Number</mat-label>
+                <input matInput placeholder="Customer Number" [(ngModel)]="customer.customerNumber" name="customerNumber" 
+                style="margin-bottom: 0px;" readonly >
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Contact Last Name</mat-label>
+                <input matInput placeholder="Contact Last Name" [(ngModel)]="customer.contactLastName" name="contactLastName" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300" >
+                <mat-label class="cm-label">Contact First Name</mat-label>
+                <input matInput placeholder="Contact First Name" [(ngModel)]="customer.contactFirstName" name="contactFirstName" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300" >
+                <mat-label class="cm-label">Phone</mat-label>
+                <input matInput placeholder="Phone" [(ngModel)]="customer.phone" name="phone" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Address Line 1</mat-label>
+                <input matInput placeholder="Address Line 1" [(ngModel)]="customer.addressLine1" name="addressLine1" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300">
+                <mat-label class="cm-label">Address Line 2</mat-label>
+                <input matInput placeholder="Address Line 2" [(ngModel)]="customer.addressLine2" name="addressLine2" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">City</mat-label>
+                <input matInput placeholder="City" [(ngModel)]="customer.city" name="city" 
+                style="font-weight: bold;margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300" >
+                <mat-label class="cm-label">Country</mat-label>
+                <input matInput placeholder="Country" [(ngModel)]="customer.country" name="country" 
+                style="font-weight: bold;margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-150" >
+                <mat-label class="cm-label">State</mat-label>
+                <input matInput placeholder="State" [(ngModel)]="customer.state" name="state" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+        
+            <mat-form-field class="cm-field-150" >
+                <mat-label class="cm-label">Postal Code</mat-label>
+                <input matInput placeholder="Postal Code" [(ngModel)]="customer.postalCode" name="postalCode" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-icon matPrefix  [routerLink]="['/employees/', customer.salesRepEmployeeNumber]">open_in_browser</mat-icon>
+                <mat-label class="cm-label">Sales Rep</mat-label>
+                <input matInput placeholder="Sales Rep" [(ngModel)]="customer.salesRepEmployeeName" name="salesRepEmployeeName" 
+                style="font-weight: bold;margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr><tr>
+            
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Credit Limit</mat-label>
+                <input matInput placeholder="Credit Limit" [ngModel]="customer.creditLimit | currency" name="creditLimit" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr>
+    </table>
+</form>
+
+<p></p>
+
+<h1 style="width: 1000px; color: white; background-color: rgb(121, 120, 120); padding: 18px; font-size: 21px">
+    Orders</h1>
+
+
+<p-table [value]="ordersList"
+    [paginator]="false" [rows]="15" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[15,25,50]"
+    styleClass="p-datatable-gridlines p-datatable-sm" 
+    [tableStyle]="{'max-width': '1000px', 'width':'1000px', 'font-size': 'small'}">
+    
+    <ng-template pTemplate="header" >
+        <th scope="col">Order number</th>
+        <th scope="col">Order Date</th>
+        <th scope="col">Required Date</th>    
+        <th scope="col">Shipped Date</th>    
+        <th scope="col">Status</th>    
+        <th scope="col">Comments</th>    
+    </ng-template>
+
+    <ng-template pTemplate="body" class="clickable" let-order>
+        <tr  [routerLink]="['/orders/', order.orderNumber]" style="font-size: small;">
+            <td scope="row">{{order.orderNumber}}</td>
+            <td>{{order.orderDate | date :'dd.MM.yyyy'}}</td>
+            <td>{{order.requiredDate | date :'dd.MM.yyyy'}}</td>
+            <td>{{order.shippedDate | date :'dd.MM.yyyy'}}</td>
+            <td style="font-weight: bold;">{{order.status}}</td>
+            <td>{{order.comments}}</td>
+        </tr>
+    </ng-template>
+
+</p-table>
+

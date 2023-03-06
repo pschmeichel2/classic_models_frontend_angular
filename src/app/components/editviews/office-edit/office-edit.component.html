@@ -1,0 +1,113 @@
+<!-- TODO: should be primeng toolbar -->
+<h3 style="font-size: 24px; display: flex; align-items:center;
+        flex-direction: row; justify-content: space-between;">
+    <div style="margin-bottom: 20px;">{{getTitle()}}</div>
+    <div flex align-items-center style="margin-bottom: 20px;">
+        <button pButton type="button" icon="pi pi-check" style="color:white; background-color: #1976D2;" (click)="handleClickSave($event)"></button>
+        <button pButton type="button" icon="pi pi-times" style="color:white; background-color: #1976D2;" (click)="handleClickCancel($event)"></button>        
+    </div>
+</h3>
+
+<p></p>
+
+<form>
+    <table>
+        <tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">City</mat-label>
+                <input matInput placeholder="City" name="city" 
+                [(ngModel)]="office.city" name="city" 
+                required maxlength="50" minlength = "1"                 
+                style="font-weight: bold; margin-bottom: 0px;" >
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300">
+                <mat-label class="cm-label">Phone</mat-label>
+                <input matInput placeholder="Phone" name="phone"
+                [(ngModel)]="office.phone" 
+                required maxlength="50" minlength = "1"                 
+                style="margin-bottom: 0px;" >
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-150">
+                <mat-label class="cm-label">Office Code</mat-label>
+                <input matInput placeholder="Office Code" name="officeCode"
+                [(ngModel)]="office.officeCode" 
+                readonly
+                style="margin-bottom: 0px;" >
+                <mat-hint>system generated</mat-hint>
+            </mat-form-field>
+            
+        </tr>
+        <tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Country</mat-label>
+                <input matInput placeholder="Country" name="country"
+                [(ngModel)]="office.country" 
+                required maxlength="50" minlength = "1"             
+                style="font-weight: bold; margin-bottom: 0px;" >
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300" >
+                <mat-label class="cm-label">State</mat-label>
+                <input matInput placeholder="State" name="state"
+                [(ngModel)]="office.state" 
+                required maxlength="50" minlength = "1"    
+                style="margin-bottom: 0px;" >
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-150" >
+                <mat-label class="cm-label">Postal Code</mat-label>
+                <input matInput placeholder="Postal Code" name="postalCode"
+                [(ngModel)]="office.postalCode" 
+                required maxlength="15" minlength = "1"    
+                style="margin-bottom: 0px;" >
+                <mat-hint><a href="https://en.wikipedia.org/wiki/List_of_postal_codes">(Postal Code Formatting)</a></mat-hint>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-150" >
+                <mat-label class="cm-label">Territory</mat-label>
+                <input matInput placeholder="Territory" name="territory"
+                [(ngModel)]="office.territory" 
+                required maxlength="10" minlength = "1"    
+                style="margin-bottom: 0px;" >
+            </mat-form-field>
+
+        </tr>
+        <tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Address Line 1</mat-label>
+                <input matInput placeholder="Address Line 1" name="addressLine1"
+                [(ngModel)]="office.addressLine1" 
+                required maxlength="50" minlength = "1"    
+                style="margin-bottom: 0px;" >
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300" 
+                style="width: 300px; margin-right: 20px;">
+                <mat-label class="cm-label">Address Line 2</mat-label>
+                <input matInput placeholder="Address Line 2" name="addressLine2"
+                [(ngModel)]="office.addressLine2" 
+                maxlength="50" 
+                style="margin-bottom: 0px;" >
+            </mat-form-field>
+        </tr>
+    </table>
+</form>
+
+<p></p>
+
+<div *ngIf="!officeError.isEmpty()" style="width:1200px; background-color:#ff5252; font-weight: bold; color:white; padding:20px; margin: 20px;">
+    <li *ngFor="let error of officeError.errors">
+        {{error}}
+    </li>
+    <div *ngIf="officeError.errors.length === 0">{{ officeError.message }}</div>
+</div>
+
+

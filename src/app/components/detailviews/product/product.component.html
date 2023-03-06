@@ -1,0 +1,114 @@
+<h3 style="width: 1000px;">Product {{productCodeFromRoute}} ({{product.productName}})</h3>
+
+<p></p>
+
+<form>
+    <table>
+        
+        <tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Product Code</mat-label>
+                <input matInput placeholder="Product Code" [(ngModel)]="product.productCode" name="productCode" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-450" >
+                <mat-label class="cm-label">Product Name</mat-label>
+                <input matInput placeholder="Product Name" [(ngModel)]="product.productName" name="productName" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-icon matPrefix  [routerLink]="['/productlines/', product.productLine]">open_in_browser</mat-icon>
+                <mat-label class="cm-label">Product Line</mat-label>
+                <input matInput placeholder="Product Line" [(ngModel)]="product.productLine" name="productLine" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300" >
+                <mat-label class="cm-label">Product Scale</mat-label>
+                <input matInput placeholder="Product Scale" [(ngModel)]="product.productScale" name="productScale" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Product Vendor</mat-label>
+                <input matInput placeholder="Product Vendor" [(ngModel)]="product.productVendor" name="productVendor" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Quantity in Stock</mat-label>
+                <input matInput placeholder="Quantity in Stock" [ngModel]="product.quantityInStock | number" name="quantityInStock" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300" >
+                <mat-label class="cm-label">Buy Price</mat-label>
+                <input matInput placeholder="Buy Price" [ngModel]="product.buyPrice | currency" name="buyPrice" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+            
+            <mat-form-field class="cm-field-300" >
+                <mat-label class="cm-label">MSRP</mat-label>
+                <input matInput placeholder="MSRP" [ngModel]="product.MSRP | currency" name="MSRP" 
+                style="margin-bottom: 0px;" readonly>
+                <mat-hint>Manufacturer's suggested Retail Price</mat-hint>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-300" 
+                style="width: 980px; margin-left: 20px;">
+                <mat-label class="cm-label">Product Description</mat-label>                
+                <textarea matInput placeholder="Product Description" [(ngModel)]="product.productDescription" name="productDescription" 
+                style="width: 970px; margin-bottom: 0px;" cdkTextareaAutosize readonly> </textarea>                
+            </mat-form-field>
+
+        </tr>
+    </table>
+</form>
+
+<p></p>
+
+<h1 style="width: 1000px; color: white; background-color: rgb(121, 120, 120); padding: 18px; font-size: 21px">
+    Order Details</h1>
+
+<p-table [value]="OrderDetailsList"
+    [paginator]="true" [rows]="15" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[15,25,50]"
+    styleClass="p-datatable-gridlines p-datatable-sm" 
+    [tableStyle]="{'max-width': '1000px', 'width':'1000px', 'font-size': 'small' }">
+    
+    <ng-template pTemplate="header" >
+        <th scope="col">Order Number</th>
+        <th scope="col">OrderLine Number</th>    
+        <th scope="col">Customer Name</th>                                
+        <th scope="col">Quantity Ordered</th>    
+        <th scope="col">Price Each</th>    
+    </ng-template>
+    
+    <ng-template pTemplate="body" class="clickable" let-orderDetail>
+        <tr  [routerLink]="['/orderDetails/', orderDetail.orderNumber, orderDetail.productCode]" style="font-size: small;">
+        <td scope="row">{{orderDetail.orderNumber}}</td>
+        <td>{{orderDetail.orderLineNumber}}</td>
+        <td style="font-weight: bold;">{{orderDetail.customerName}}</td>
+        <td style="text-align: right;">{{orderDetail.quantityOrdered| number}}</td>
+        <td style="text-align: right;">{{orderDetail.priceEach | currency}}</td>    
+    </tr>
+    </ng-template>
+    
+</p-table>
+    
+    

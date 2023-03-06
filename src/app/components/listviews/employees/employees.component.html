@@ -1,0 +1,33 @@
+<h3 style="width:1400px; ">Employees</h3>
+
+<p-table [value]="EmployeesList"
+    [paginator]="true" [rows]="15" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[15,25,50]"
+    styleClass="p-datatable-gridlines p-datatable-sm" [tableStyle]="{'max-width': '1500px', 'width':'1500px', 'font-size': 'small' }">
+    
+    <ng-template pTemplate="header" >
+        <th scope="col">Employee Number</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">First Name</th>    
+        <th scope="col">Job Title</th>    
+        <th scope="col">Office</th>    
+        <th scope="col">Extension</th>    
+        <th scope="col">Email</th>    
+        <th scope="col">ReportsToName</th>    
+    </ng-template>
+
+    <ng-template pTemplate="body" class="clickable" let-employee>
+        <tr  [routerLink]="['/employees/', employee.employeeNumber]" style="font-size: small;">
+                <td scope="row">{{employee.employeeNumber}}</td>
+                <td style="font-weight: bold;">{{employee.lastName}}</td>
+                <td style="font-weight: bold;">{{employee.firstName}}</td>
+                <td style="font-weight: bold;">{{employee.jobTitle}}</td>
+                <td>{{employee.city}}</td>
+                <td>{{employee.extension}}</td>
+                <td>{{employee.email}}</td>                            
+                <td>{{employee.reportsToName}}</td>
+            </tr>
+    </ng-template>
+
+</p-table>
+

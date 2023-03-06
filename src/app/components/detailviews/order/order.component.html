@@ -1,0 +1,88 @@
+<h3 style="width: 1000px;">Order {{orderNumberFromRoute}}</h3>
+
+<p></p>
+
+<form>
+    <table>
+        
+        <tr>
+
+            <mat-form-field class="cm-field-150" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Order Date</mat-label>
+                <input matInput placeholder="Order Date" [ngModel]="order.orderDate | date :'dd.MM.yyyy'" name="orderDate" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300">
+                <mat-icon matPrefix  [routerLink]="['/customers/', order.customerNumber]">open_in_browser</mat-icon>
+                <mat-label class="cm-label">Customer</mat-label>                
+                <input matInput placeholder="Customer Name" [(ngModel)]="order.customerName" name="customerName" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-150"
+                style="margin-left: 20px;">                
+                <mat-label class="cm-label">Required Date</mat-label>
+                <input matInput placeholder="Required Date" [ngModel]="order.requiredDate | date :'dd.MM.yyyy'" name="requiredDate" 
+                style="margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="cm-field-300" >
+                <mat-label class="cm-label">Status</mat-label>
+                <input matInput placeholder="Status" [(ngModel)]="order.status" name="status" 
+                style="font-weight: bold; margin-bottom: 0px;" readonly>
+            </mat-form-field>
+
+        </tr><tr>
+
+            <mat-form-field class="cm-field-150" 
+                style="margin-left: 20px;">
+                <mat-label class="cm-label">Shipped Date</mat-label>
+                <input matInput placeholder="Shipped Date" [ngModel]="order.shippedDate | date :'dd.MM.yyyy'" name="shippedDate" 
+                style="margin-bottom: 0px; " readonly>
+            </mat-form-field>
+
+            <mat-form-field style="width: 600px;" >
+                <mat-label class="cm-label">Comments</mat-label>                
+                <textarea matInput placeholder="Comments" [(ngModel)]="order.comments" name="comments" 
+                style="width: 580px; margin-bottom: 0px;" cdkTextareaAutosize readonly></textarea>                    
+            </mat-form-field>
+
+        </tr>
+    </table>
+</form>
+
+<p></p>
+
+<h1 style="width: 1000px; color: white; background-color: rgb(121, 120, 120); padding: 18px; font-size: 21px">
+    Order Details</h1>    
+
+<p-table [value]="OrderDetailsList"
+    [paginator]="true" [rows]="15" [showCurrentPageReport]="true" 
+    currentPageReportTemplate="{first} - {last} of {totalRecords}" [rowsPerPageOptions]="[15,25,50]"
+    styleClass="p-datatable-gridlines p-datatable-sm" 
+    [tableStyle]="{'max-width': '1000px', 'width':'1000px', 'font-size': 'small' }">
+    
+    <ng-template pTemplate="header" >
+        <th scope="col">Order Line Number</th>                    
+        <th scope="col">Product Code</th>
+        <th scope="col">Product Name</th>    
+        <th scope="col">Quantity Ordered</th>    
+        <th scope="col">Price Each</th>    
+    </ng-template>
+
+    <ng-template pTemplate="body" class="clickable" let-orderDetail>
+        <tr  [routerLink]="['/orderDetails/', orderDetail.orderNumber, orderDetail.productCode]" style="font-size: small;">
+            <td scope="row">{{orderDetail.orderLineNumber}}</td>                
+            <td style="font-weight: bold;">{{orderDetail.productCode}}</td>
+            <td style="font-weight: bold;">{{orderDetail.productName}}</td>
+            <td style="text-align: right;">{{orderDetail.quantityOrdered| number}}</td>
+            <td style="text-align: right;">{{orderDetail.priceEach | currency}}</td>
+        </tr>
+    </ng-template>
+
+</p-table>
+
